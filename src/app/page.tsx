@@ -5,7 +5,7 @@ import { Shield, Phone, Mail, MapPin, ChevronLeft, ChevronRight, Menu, X, Users,
 
 const NalonSecuritySite = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [currentTeamSlide, setCurrentTeamSlide] = useState(0);
+  const [currentServiceSlide, setCurrentServiceSlide] = useState(0);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   const [formData, setFormData] = useState({
@@ -16,7 +16,6 @@ const NalonSecuritySite = () => {
   });
   const [mounted, setMounted] = useState(false);
 
-  // Add this useEffect
   useEffect(() => {
     setMounted(true);
   }, []);
@@ -24,37 +23,67 @@ const NalonSecuritySite = () => {
   const slides = [
     {
       image: "https://images.unsplash.com/photo-1557804506-669a67965ba0?w=1600&h=900&fit=crop",
-      title: "Elite Security Solutions",
-      description: "Protecting what matters most with unwavering vigilance and professionalism"
+      title: "Tech-Integrated Security Solutions",
+      description: "Building safer communities through innovative technology and human-centered strategies"
     },
     {
       image: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=1600&h=900&fit=crop",
-      title: "24/7 Security Operations",
-      description: "Round-the-clock protection for your assets, personnel, and premises"
+      title: "Intelligence & Innovation",
+      description: "Fusing AI, IoT, and data analytics with traditional security for smarter protection"
     },
     {
       image: "https://images.unsplash.com/photo-1568992687947-868a62a9f521?w=1600&h=900&fit=crop",
-      title: "Trusted by Leading Organizations",
-      description: "Nigeria's premier private security provider with proven excellence"
+      title: "Community Empowerment",
+      description: "Transforming lives through our Community Anchor Programme while enhancing security"
     }
   ];
 
-  const teamMembers = [
-    { name: 'Adekunle Okonkwo', position: 'Chief Security Officer', image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop' },
-    { name: 'Ngozi Mbanu', position: 'Operations Director', image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop' },
-    { name: 'Ibrahim Yusuf', position: 'Training Coordinator', image: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&h=400&fit=crop' },
-    { name: 'Amaka Nwosu', position: 'Client Relations Manager', image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=400&fit=crop' },
-    { name: 'Chukwudi Eze', position: 'Senior Security Analyst', image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop' },
-    { name: 'Fatima Hassan', position: 'Risk Assessment Lead', image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop' },
-    { name: 'Oluwaseun Adebayo', position: 'Field Operations Manager', image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop' },
-    { name: 'Zainab Lawal', position: 'Technology Systems Officer', image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&h=400&fit=crop' },
-    { name: 'Emeka Okafor', position: 'Patrol Unit Supervisor', image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&h=400&fit=crop' },
-    { name: 'Blessing Okoro', position: 'HR & Compliance Manager', image: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=400&h=400&fit=crop' },
-    { name: 'Ahmed Bello', position: 'Intelligence Officer', image: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=400&h=400&fit=crop' },
-    { name: 'Chioma Ajayi', position: 'Event Security Coordinator', image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&h=400&fit=crop' },
-    { name: 'Tunde Bakare', position: 'Tactical Response Leader', image: 'https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=400&h=400&fit=crop' },
-    { name: 'Kemi Adeyemi', position: 'Corporate Accounts Manager', image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop' },
-    { name: 'Samuel Ojo', position: 'Residential Security Lead', image: 'https://images.unsplash.com/photo-1506277886164-e25aa3f4ef7f?w=400&h=400&fit=crop' }
+  const services = [
+    {
+      title: 'Community Security Management',
+      description: 'Recruit, train, and deploy youths as safety agents via the Community Anchor Programme to enhance local safety and employment',
+      image: 'https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=1600&h=900&fit=crop'
+    },
+    {
+      title: 'IP Surveillance Solutions',
+      description: 'Remote CCTV monitoring with real-time alerts and analytics for proactive threat detection',
+      image: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?w=1600&h=900&fit=crop'
+    },
+    {
+      title: 'Private Investigations',
+      description: 'Gather, analyze, and evaluate information for discreet investigations and conflict resolution',
+      image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1600&h=900&fit=crop'
+    },
+    {
+      title: 'Intelligence Analysis Training',
+      description: 'Tailored programs for executives on threat assessment and strategic intelligence',
+      image: 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=1600&h=900&fit=crop'
+    },
+    {
+      title: 'VIP & Close Protection',
+      description: 'Personalized security for high-profile individuals using tech-enhanced tactics',
+      image: 'https://images.unsplash.com/photo-1556742393-d75f468bfcb0?w=1600&h=900&fit=crop'
+    },
+    {
+      title: 'Event & Conference Security',
+      description: 'Full planning, crowd control, and surveillance for safe events',
+      image: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1600&h=900&fit=crop'
+    },
+    {
+      title: 'Security Guard Services',
+      description: 'Manned guarding in partnership with the Civilian Joint Task Force for on-site protection',
+      image: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=1600&h=900&fit=crop'
+    },
+    {
+      title: 'IT Solutions & Cybersecurity',
+      description: 'Custom software, website development, social media management, and cybersecurity services',
+      image: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=1600&h=900&fit=crop'
+    },
+    {
+      title: 'Research & Innovation',
+      description: 'Continuous R&D to develop new security protocols, tools, and strategies for evolving digital risks',
+      image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1600&h=900&fit=crop'
+    }
   ];
 
   useEffect(() => {
@@ -63,21 +92,21 @@ const NalonSecuritySite = () => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
     }, 5000);
     return () => clearInterval(timer);
-  }, [mounted]);
+  }, [mounted, slides.length]);
 
   useEffect(() => {
     if (!mounted) return;
-    const teamTimer = setInterval(() => {
-      setCurrentTeamSlide((prev) => (prev + 1) % teamMembers.length);
+    const serviceTimer = setInterval(() => {
+      setCurrentServiceSlide((prev) => (prev + 1) % services.length);
     }, 4000);
-    return () => clearInterval(teamTimer);
-  }, [mounted]);
+    return () => clearInterval(serviceTimer);
+  }, [mounted, services.length]);
 
   const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % slides.length);
   const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
 
-  const nextTeamSlide = () => setCurrentTeamSlide((prev) => (prev + 1) % teamMembers.length);
-  const prevTeamSlide = () => setCurrentTeamSlide((prev) => (prev - 1 + teamMembers.length) % teamMembers.length);
+  const nextServiceSlide = () => setCurrentServiceSlide((prev) => (prev + 1) % services.length);
+  const prevServiceSlide = () => setCurrentServiceSlide((prev) => (prev - 1 + services.length) % services.length);
 
   const scrollToSection = (sectionId: string) => {
     setActiveSection(sectionId);
@@ -96,7 +125,6 @@ const NalonSecuritySite = () => {
     setFormData({ name: '', email: '', phone: '', message: '' });
   };
 
-  // Don't render until mounted on client
   if (!mounted) {
     return (
       <div className="min-h-screen bg-white flex items-center justify-center">
@@ -124,7 +152,7 @@ const NalonSecuritySite = () => {
 
             {/* Desktop Menu */}
             <div className="hidden md:flex space-x-8">
-              {['home', 'about', 'contact'].map((section) => (
+              {['home', 'about', 'services', 'contact'].map((section) => (
                 <button
                   key={section}
                   onClick={() => scrollToSection(section)}
@@ -153,7 +181,7 @@ const NalonSecuritySite = () => {
         {mobileMenuOpen && (
           <div className="md:hidden bg-slate-800 border-t border-slate-700">
             <div className="px-4 py-4 space-y-3">
-              {['home', 'about', 'contact'].map((section) => (
+              {['home', 'about', 'services', 'contact'].map((section) => (
                 <button
                   key={section}
                   onClick={() => scrollToSection(section)}
@@ -257,130 +285,109 @@ const NalonSecuritySite = () => {
 
           <div className="grid md:grid-cols-2 gap-12 mb-16">
             <div className="bg-white/60 backdrop-blur-sm p-8 rounded-lg shadow-lg border border-gray-300">
-              <h3 className="text-2xl font-bold text-slate-900 mb-4">Our Mission</h3>
-              <p className="text-gray-700 leading-relaxed mb-6">
-                Nalon Integrated Services is Nigeria's premier private security provider, dedicated to
-                delivering comprehensive security solutions with unmatched professionalism and reliability.
-                We understand that security is not just about protection—it's about peace of mind.
+              <h3 className="text-2xl font-bold text-slate-900 mb-4">Who We Are</h3>
+              <p className="text-gray-700 leading-relaxed mb-4">
+                At Nalon Integrated Services, we are more than a security firm—we're your trusted partner in building safer communities through innovative technology and human-centered strategies. Founded on the United Nations human security framework, we blend cutting-edge IT solutions with expert security services to deliver comprehensive protection tailored to modern challenges. Our mission is to safeguard lives, assets, and peace of mind by integrating advanced tech with community-focused initiatives.
+              </p>
+              <p className="text-gray-700 leading-relaxed mb-4">
+                With a proven record in private investigations, conflict resolution, and surveillance, we empower businesses, governments, and individuals to thrive in secure environments. Our research-driven approach ensures we're always ahead of emerging threats, while our commitment to social impact through programs like the Community Anchor Programme, transforms unemployed youths into skilled safety agents, fostering community resilience from the ground up.
               </p>
               <p className="text-gray-700 leading-relaxed">
-                With years of experience serving corporate clients, residential communities, and high-profile
-                individuals across Nigeria, we have built a reputation for excellence, integrity, and
-                unwavering commitment to our clients' safety.
+                Whether you're securing a high-profile event, monitoring remote assets, or seeking bespoke IT security tools, Nalon Integrated Services is your all-in-one solution for intelligent, reliable protection.
               </p>
             </div>
             <div className="bg-white/60 backdrop-blur-sm p-8 rounded-lg shadow-lg border border-gray-300">
-              <h3 className="text-2xl font-bold text-slate-900 mb-4">Why Choose Us</h3>
-              <ul className="space-y-4">
-                <li className="flex items-start">
-                  <Shield className="h-6 w-6 text-blue-600 mr-3 flex-shrink-0 mt-1" />
-                  <div>
-                    <span className="font-semibold text-slate-900">Highly Trained Personnel</span>
-                    <p className="text-gray-700">Our security officers undergo rigorous training and continuous professional development</p>
-                  </div>
-                </li>
-                <li className="flex items-start">
-                  <Clock className="h-6 w-6 text-blue-600 mr-3 flex-shrink-0 mt-1" />
-                  <div>
-                    <span className="font-semibold text-slate-900">24/7 Operations</span>
-                    <p className="text-gray-700">Round-the-clock monitoring and rapid response capabilities</p>
-                  </div>
-                </li>
-                <li className="flex items-start">
-                  <Lock className="h-6 w-6 text-blue-600 mr-3 flex-shrink-0 mt-1" />
-                  <div>
-                    <span className="font-semibold text-slate-900">Advanced Technology</span>
-                    <p className="text-gray-700">State-of-the-art security systems and monitoring equipment</p>
-                  </div>
-                </li>
-              </ul>
+              <h3 className="text-2xl font-bold text-slate-900 mb-4">Our Vision & Mission</h3>
+              <div className="mb-6">
+                <h4 className="font-semibold text-slate-900 mb-2">Vision</h4>
+                <p className="text-gray-700 leading-relaxed">
+                  To be the foremost tech-based security solutions provider, leading the industry with innovative, integrated protections that set new standards for safety and resilience.
+                </p>
+              </div>
+              <div>
+                <h4 className="font-semibold text-slate-900 mb-2">Mission</h4>
+                <p className="text-gray-700 leading-relaxed">
+                  To safeguard lives, assets, and communities by fusing cutting-edge technology with human expertise, fostering empowerment, intelligence, and peace of mind in an ever-evolving threat landscape.
+                </p>
+              </div>
             </div>
           </div>
 
-          {/* Services Grid */}
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                title: 'Corporate Security',
-                description: 'Comprehensive security solutions for businesses, offices, and commercial facilities',
-                image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&h=600&fit=crop'
-              },
-              {
-                title: 'Residential Protection',
-                description: 'Elite security services for estates, gated communities, and private residences',
-                image: 'https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=800&h=600&fit=crop'
-              },
-              {
-                title: 'Event Security',
-                description: 'Professional crowd management and security for corporate and private events',
-                image: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&h=600&fit=crop'
-              }
-            ].map((service, index) => (
-              <div
-                key={index}
-                className="bg-white/70 backdrop-blur-sm rounded-lg shadow-lg hover:shadow-xl transition-shadow border border-gray-300 overflow-hidden"
-              >
-                <div className="h-48 overflow-hidden">
-                  <img 
-                    src={service.image} 
-                    alt={service.title}
-                    className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
-                  />
-                </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-slate-900 mb-3">{service.title}</h3>
-                  <p className="text-gray-700">{service.description}</p>
+          {/* Why Choose Us */}
+          <div className="bg-white/60 backdrop-blur-sm p-8 rounded-lg shadow-lg border border-gray-300">
+            <h3 className="text-2xl font-bold text-slate-900 mb-6 text-center">Why Choose Nalon?</h3>
+            <div className="grid md:grid-cols-2 gap-6">
+              <div className="flex items-start">
+                <Shield className="h-6 w-6 text-blue-600 mr-3 flex-shrink-0 mt-1" />
+                <div>
+                  <span className="font-semibold text-slate-900">Tech-Integrated Excellence</span>
+                  <p className="text-gray-700">We fuse AI, IoT, and data analytics with traditional security for smarter, faster responses</p>
                 </div>
               </div>
-            ))}
+              <div className="flex items-start">
+                <Users className="h-6 w-6 text-blue-600 mr-3 flex-shrink-0 mt-1" />
+                <div>
+                  <span className="font-semibold text-slate-900">Community Impact</span>
+                  <p className="text-gray-700">Our Community Anchor Programme creates lasting positive change and employment</p>
+                </div>
+              </div>
+              <div className="flex items-start">
+                <Lock className="h-6 w-6 text-blue-600 mr-3 flex-shrink-0 mt-1" />
+                <div>
+                  <span className="font-semibold text-slate-900">Proven Expertise</span>
+                  <p className="text-gray-700">Years of handling investigations, trainings, and partnerships ensure reliable results</p>
+                </div>
+              </div>
+              <div className="flex items-start">
+                <Clock className="h-6 w-6 text-blue-600 mr-3 flex-shrink-0 mt-1" />
+                <div>
+                  <span className="font-semibold text-slate-900">Client-Centric Approach</span>
+                  <p className="text-gray-700">Tailored solutions that are scalable, affordable, and easy to implement</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Meet Our Team Section */}
-      <section className="py-20 bg-gradient-to-br from-slate-300 via-gray-300 to-slate-400">
+      {/* Services Section */}
+      <section id="services" className="py-20 bg-gradient-to-br from-slate-300 via-gray-300 to-slate-400">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
-              Meet Our Team
+              Our Services
             </h2>
             <div className="w-24 h-1 bg-slate-700 mx-auto mb-4"></div>
-            <p className="text-slate-800 text-lg">
-              Experienced professionals committed to your safety and security
+            <p className="text-slate-800 text-lg max-w-3xl mx-auto">
+              Comprehensive offerings that integrate cutting-edge technology for efficient, scalable protection
             </p>
           </div>
 
-          <div className="relative pb-32">
-            {/* Team Member Display */}
-            <div className="relative flex justify-center items-center" style={{ minHeight: '600px' }}>
-              {teamMembers.map((member, index) => (
+          <div className="relative">
+            {/* Service Slideshow */}
+            <div className="relative h-[600px] overflow-hidden rounded-2xl shadow-2xl">
+              {services.map((service, index) => (
                 <div
                   key={index}
-                  className={`absolute top-0 left-1/2 transform -translate-x-1/2 transition-all duration-700 ${
-                    index === currentTeamSlide
-                      ? 'opacity-100 scale-100 z-10'
-                      : 'opacity-0 scale-95 z-0 pointer-events-none'
+                  className={`absolute inset-0 transition-opacity duration-1000 ${
+                    index === currentServiceSlide ? 'opacity-100' : 'opacity-0'
                   }`}
                 >
-                  <div className="bg-white rounded-2xl shadow-2xl overflow-hidden border-2 border-slate-400 w-full max-w-md">
-                    <div className="h-80 overflow-hidden bg-gray-200">
-                      <img
-                        src={member.image}
-                        alt={member.name}
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                    <div className="p-8 text-center bg-gradient-to-b from-white to-slate-100">
-                      <h3 className="text-3xl font-bold text-slate-900 mb-2">
-                        {member.name}
+                  <img
+                    src={service.image}
+                    alt={service.title}
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/95 via-slate-900/70 to-transparent" />
+                  
+                  <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12">
+                    <div className="max-w-4xl mx-auto text-center">
+                      <h3 className="text-3xl md:text-5xl font-bold text-white mb-4">
+                        {service.title}
                       </h3>
-                      <p className="text-slate-700 text-xl font-medium mb-4">
-                        {member.position}
+                      <p className="text-lg md:text-xl text-gray-200">
+                        {service.description}
                       </p>
-                      <div className="flex justify-center items-center text-slate-600 text-sm">
-                        <Shield className="h-5 w-5 mr-2 text-slate-700" />
-                        <span>Nalon Integrated Services</span>
-                      </div>
                     </div>
                   </div>
                 </div>
@@ -388,39 +395,32 @@ const NalonSecuritySite = () => {
             </div>
 
             {/* Navigation Controls */}
-            <div className="flex justify-center items-center space-x-6 mt-8">
+            <div className="flex justify-center items-center space-x-4 mt-8">
               <button
-                onClick={prevTeamSlide}
-                className="bg-slate-700 hover:bg-slate-800 border border-slate-600 p-4 rounded-full transition-colors shadow-lg"
+                onClick={prevServiceSlide}
+                className="bg-slate-700 hover:bg-slate-800 border border-slate-600 p-3 rounded-full transition-colors shadow-lg"
               >
                 <ChevronLeft className="h-6 w-6 text-white" />
               </button>
               
-              <div className="flex items-center space-x-3">
-                <span className="text-slate-900 font-semibold text-lg">
-                  {currentTeamSlide + 1} / {teamMembers.length}
-                </span>
+              <div className="flex space-x-2">
+                {services.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentServiceSlide(index)}
+                    className={`h-2 rounded-full transition-all ${
+                      index === currentServiceSlide ? 'w-8 bg-slate-800' : 'w-2 bg-slate-500'
+                    }`}
+                  />
+                ))}
               </div>
 
               <button
-                onClick={nextTeamSlide}
-                className="bg-slate-700 hover:bg-slate-800 border border-slate-600 p-4 rounded-full transition-colors shadow-lg"
+                onClick={nextServiceSlide}
+                className="bg-slate-700 hover:bg-slate-800 border border-slate-600 p-3 rounded-full transition-colors shadow-lg"
               >
                 <ChevronRight className="h-6 w-6 text-white" />
               </button>
-            </div>
-
-            {/* Dot Indicators */}
-            <div className="flex justify-center space-x-2 mt-6 flex-wrap max-w-2xl mx-auto">
-              {teamMembers.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => setCurrentTeamSlide(index)}
-                  className={`h-2 rounded-full transition-all ${
-                    index === currentTeamSlide ? 'w-8 bg-slate-800' : 'w-2 bg-slate-500'
-                  }`}
-                />
-              ))}
             </div>
           </div>
         </div>
@@ -447,8 +447,8 @@ const NalonSecuritySite = () => {
                   <Phone className="h-6 w-6 text-blue-400 mr-4 flex-shrink-0 mt-1" />
                   <div>
                     <h4 className="font-semibold text-white mb-1">Phone</h4>
-                    <p className="text-gray-300">+234 (0) XXX XXX XXXX</p>
-                    <p className="text-gray-300">+234 (0) XXX XXX XXXX</p>
+                    <p className="text-gray-300">+234 817 196 2172</p>
+                    {/* <p className="text-gray-300">+234 816 987 4588</p> */}
                   </div>
                 </div>
                 <div className="flex items-start">
@@ -547,7 +547,7 @@ const NalonSecuritySite = () => {
               </div>
             </div>
             <p className="text-gray-400 text-sm text-center md:text-right">
-              © 2024 Nalon Integrated Services. All rights reserved.
+              © 2025 Nalon Integrated Services. All rights reserved.
             </p>
           </div>
         </div>
