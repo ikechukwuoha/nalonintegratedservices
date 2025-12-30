@@ -301,7 +301,7 @@ const NalonSecuritySite = () => {
               <div className="mb-6">
                 <h4 className="font-semibold text-slate-900 mb-2">Vision</h4>
                 <p className="text-gray-700 leading-relaxed">
-                  To be the foremost tech-based security solutions provider, leading the industry with innovative, integrated protections that set new standards for safety and resilience.
+                 To be the foremost tech-based security services provider, leading the industry with innovative, integrated solutions that set new standards for safety and resilience.
                 </p>
               </div>
               <div>
@@ -447,7 +447,7 @@ const NalonSecuritySite = () => {
                   <Phone className="h-6 w-6 text-blue-400 mr-4 flex-shrink-0 mt-1" />
                   <div>
                     <h4 className="font-semibold text-white mb-1">Phone</h4>
-                    <p className="text-gray-300">+234 817 196 2172</p>
+                    <p className="text-gray-300">+234 701 918 6812</p>
                     {/* <p className="text-gray-300">+234 816 987 4588</p> */}
                   </div>
                 </div>
