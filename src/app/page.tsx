@@ -307,7 +307,7 @@ const NalonSecuritySite = () => {
               <div>
                 <h4 className="font-semibold text-slate-900 mb-2">Mission</h4>
                 <p className="text-gray-700 leading-relaxed">
-                  To safeguard lives, assets, and communities by fusing cutting-edge technology with human expertise, fostering empowerment, intelligence, and peace of mind in an ever-evolving threat landscape.
+                  To be the foremost tech-based security services provider, leading the industry with innovative, integrated solutions that set new standards for safety and resilience.
                 </p>
               </div>
             </div>
