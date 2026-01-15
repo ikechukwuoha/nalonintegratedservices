@@ -1,7 +1,8 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Shield, Phone, Mail, MapPin, ChevronLeft, ChevronRight, Menu, X, Users, Lock, Clock } from 'lucide-react';
+import { Shield, Phone, Mail, MapPin, ChevronLeft, ChevronRight, Menu, X, Users, Lock, Clock, MessageCircle } from 'lucide-react';
+import emailjs from '@emailjs/browser';
 
 const NalonSecuritySite = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -20,6 +21,9 @@ const NalonSecuritySite = () => {
     setMounted(true);
   }, []);
 
+  useEffect(() => {
+  emailjs.init('A11mUvV07Ty5XImjb');
+}, []);
   const slides = [
     {
       image: "https://images.unsplash.com/photo-1557804506-669a67965ba0?w=1600&h=900&fit=crop",
@@ -119,11 +123,31 @@ const NalonSecuritySite = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    alert('Thank you for your inquiry! We will contact you shortly.');
-    setFormData({ name: '', email: '', phone: '', message: '' });
-  };
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+  
+  try {
+    const result = await emailjs.send(
+      'service_scadbfv',  // Get from EmailJS dashboard
+      'template_uyprv9h', // Get from EmailJS dashboard
+      {
+        from_name: formData.name,
+        from_email: formData.email,
+        phone: formData.phone,
+        message: formData.message,
+        to_email: 'info@nalonservices.com',
+      }
+    );
+    
+    if (result.text === 'OK') {
+      alert('Thank you for your inquiry! We will contact you shortly.');
+      setFormData({ name: '', email: '', phone: '', message: '' });
+    }
+  } catch (error) {
+    console.error('Failed to send email:', error);
+    alert('Sorry, there was an error sending your message. Please try again or contact us directly.');
+  }
+};
 
   if (!mounted) {
     return (
@@ -286,13 +310,13 @@ const NalonSecuritySite = () => {
           <div className="grid md:grid-cols-2 gap-12 mb-16">
             <div className="bg-white/60 backdrop-blur-sm p-8 rounded-lg shadow-lg border border-gray-300">
               <h3 className="text-2xl font-bold text-slate-900 mb-4">Who We Are</h3>
-              <p className="text-gray-700 leading-relaxed mb-4">
+              <p className="text-gray-700 leading-relaxed mb-4 text-justify">
                 At Nalon Integrated Services, we are more than a security firm—we're your trusted partner in building safer communities through innovative technology and human-centered strategies. Founded on the United Nations human security framework, we blend cutting-edge IT solutions with expert security services to deliver comprehensive protection tailored to modern challenges. Our mission is to safeguard lives, assets, and peace of mind by integrating advanced tech with community-focused initiatives.
               </p>
-              <p className="text-gray-700 leading-relaxed mb-4">
+              <p className="text-gray-700 leading-relaxed mb-4 text-justify">
                 With a proven record in private investigations, conflict resolution, and surveillance, we empower businesses, governments, and individuals to thrive in secure environments. Our research-driven approach ensures we're always ahead of emerging threats, while our commitment to social impact through programs like the Community Anchor Programme, transforms unemployed youths into skilled safety agents, fostering community resilience from the ground up.
               </p>
-              <p className="text-gray-700 leading-relaxed">
+              <p className="text-gray-700 leading-relaxed text-justify">
                 Whether you're securing a high-profile event, monitoring remote assets, or seeking bespoke IT security tools, Nalon Integrated Services is your all-in-one solution for intelligent, reliable protection.
               </p>
             </div>
@@ -300,14 +324,14 @@ const NalonSecuritySite = () => {
               <h3 className="text-2xl font-bold text-slate-900 mb-4">Our Vision & Mission</h3>
               <div className="mb-6">
                 <h4 className="font-semibold text-slate-900 mb-2">Vision</h4>
-                <p className="text-gray-700 leading-relaxed">
+                <p className="text-gray-700 leading-relaxed text-justify">
                  To be the foremost tech-based security services provider, leading the industry with innovative, integrated solutions that set new standards for safety and resilience.
                 </p>
               </div>
               <div>
                 <h4 className="font-semibold text-slate-900 mb-2">Mission</h4>
-                <p className="text-gray-700 leading-relaxed">
-                  To be the foremost tech-based security services provider, leading the industry with innovative, integrated solutions that set new standards for safety and resilience.
+                <p className="text-gray-700 leading-relaxed text-justify">  
+                To safeguard lives, assets, and communities by fusing cutting-edge technology with human expertise, fostering empowerment, intelligence, and peace of mind in an ever-evolving threat landscape.
                 </p>
               </div>
             </div>
@@ -455,8 +479,8 @@ const NalonSecuritySite = () => {
                   <Mail className="h-6 w-6 text-blue-400 mr-4 flex-shrink-0 mt-1" />
                   <div>
                     <h4 className="font-semibold text-white mb-1">Email</h4>
-                    <p className="text-gray-300">info@nalonservices.com</p>
-                    <p className="text-gray-300">operations@nalonservices.com</p>
+                    <p className="text-gray-300">nalonintegratedservices@gmail.com</p>
+                    <p className="text-gray-300"></p>
                   </div>
                 </div>
                 <div className="flex items-start">
@@ -552,8 +576,23 @@ const NalonSecuritySite = () => {
           </div>
         </div>
       </footer>
+      {/* Floating WhatsApp Button */}
+      
+       <a href="https://wa.me/2347019186812"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-2xl transition-all hover:scale-110 z-50 flex items-center justify-center group"
+        aria-label="Chat on WhatsApp"
+      >
+        <MessageCircle className="h-8 w-8" />
+        <span className="absolute right-full mr-3 bg-slate-900 text-white px-3 py-2 rounded-lg text-sm whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">
+          Chat with us
+        </span>
+      </a>
     </div>
+    
   );
+  
 };
 
 export default NalonSecuritySite;
